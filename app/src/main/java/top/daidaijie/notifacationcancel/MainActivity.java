@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "cancel a notification", Toast.LENGTH_SHORT).show();
             }
         });
+        localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.registerReceiver(cancelBroadCast, CancelBroadCast.newIntentFilter());
     }
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 CancelBroadCast.newIntent(), 0);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this.getApplicationContext(),
                 CHANNEL_ID)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setDeleteIntent(pi)
                 .setContentTitle("Title")
                 .setContentText("Hello World");
